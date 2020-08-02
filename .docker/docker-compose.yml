@@ -57,7 +57,7 @@ services:
   outbox:
     container_name: outboxservice
     build:
-      context: outbox-service/.
+      context: ../outbox-service/.
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -69,10 +69,10 @@ services:
     depends_on:
       - postgresdb
       - kafka-server1
- orderlog:
+  orderlog:
     container_name: orderlogservice
     build:
-      context: no-sql-service/.
+      context: ../no-sql-service/.
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
