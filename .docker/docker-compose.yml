@@ -4,7 +4,7 @@ networks:
     driver: bridge   
 services: 
   zookeeper-server:
-    image: 'bitnami/zookeeper:latest'
+    image: wurstmeister/zookeeper
     networks:
       - outbox-net
     ports:
@@ -12,14 +12,14 @@ services:
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
   kafka-server1:
-    image: 'bitnami/kafka:latest'
+    image: wurstmeister/kafka
     networks:
       - outbox-net    
     ports:
       - '9093:9093'
     environment:
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server
-      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_ADVERTISED_HOST_NAME: localhost
+      - KAFKA_ZOOKEEPER_CONNECT: zookeeper-server:2182
     depends_on:
       - zookeeper-server
   mongo:
