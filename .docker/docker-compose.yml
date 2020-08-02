@@ -18,8 +18,8 @@ services:
     ports:
       - '9093:9093'
     environment:
-      - KAFKA_ADVERTISED_HOST_NAME:localhost
-      - KAFKA_ZOOKEEPER_CONNECT:zookeeper-server:2182
+      - KAFKA_ADVERTISED_HOST_NAME:'localhost'
+      - KAFKA_ZOOKEEPER_CONNECT:'zookeeper-server:2182'
     depends_on:
       - zookeeper-server
   mongo:
