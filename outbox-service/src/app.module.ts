@@ -14,7 +14,7 @@ import { MessagePublisher } from './services/message-publisher.service';
     TypeOrmModule.forRoot(
       {
         "type": "postgres",
-        "host": "mybuild.centralus.cloudapp.azure.com",
+        "host": "localhost",
         "port": 5432,
         "username": "postgres",
         "password": "outbox-P@ssword",
