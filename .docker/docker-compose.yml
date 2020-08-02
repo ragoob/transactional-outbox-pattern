@@ -8,7 +8,7 @@ services:
     networks:
       - outbox-net
     ports:
-      - '2181:2181'
+      - '2182:2182'
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
   kafka-server1:
@@ -16,7 +16,7 @@ services:
     networks:
       - outbox-net    
     ports:
-      - '9092:9092'
+      - '9093:9093'
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper-server:2181
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
