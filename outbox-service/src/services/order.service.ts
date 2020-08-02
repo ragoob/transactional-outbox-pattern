@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { OrderOutBox } from 'src/models/order-outbox.entity';
 import { Order } from 'src/models/order.entity';
 import { IsNull, Repository } from "typeorm";
+import { getManager } from "typeorm";
 
 @Injectable()
 export class OrderService {
@@ -14,11 +15,15 @@ export class OrderService {
 
     }
     public async createOrder(order: Order): Promise<void> {
-        await this.orderRepository.insert(order);
-        const outbox: OrderOutBox = new OrderOutBox();
-        outbox.order_id = order.order_id;
-        outbox.operation_type = 'insert'
-        await this.orderOutboxRepository.insert(outbox);
+        await getManager().transaction("SERIALIZABLE", async transactionalEntityManager => {
+            await this.orderRepository.insert(order);
+            const outbox: OrderOutBox = new OrderOutBox();
+            outbox.order_id = order.order_id;
+            outbox.operation_type = 'insert'
+            await this.orderOutboxRepository.insert(outbox);
+        });
+
+
     }
 
     public getunSentOrders(): Promise<OrderOutBox[]> {
