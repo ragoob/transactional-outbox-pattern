@@ -54,6 +54,7 @@ services:
        - 5432:5432
     environment:
       POSTGRES_PASSWORD: outbox-P@ssword
+      POSTGRES_DB: Transactional-outbox
   outbox:
     container_name: outboxservice
     build:
