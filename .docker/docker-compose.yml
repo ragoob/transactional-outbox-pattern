@@ -1,5 +1,4 @@
 version: '3'
-
 networks:
   outbox-net:
     driver: bridge   
@@ -69,7 +68,7 @@ services:
     depends_on:
       - postgresdb
       - kafka-server1
- orderlog:
+  orderlog:
     container_name: orderlogservice
     build:
       context: no-sql-service/.
