@@ -6,7 +6,7 @@ import { OrderTransaction, OrderTransactionSchema } from './models/order-documen
 import { MessagePublisher } from './services/message-subscriber.service';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost:27017', {
+  imports: [MongooseModule.forRoot('mongodb://mongo:27017', {
     user: 'root',
     pass: 'P@ssw0rd',
     dbName: 'order-logger',

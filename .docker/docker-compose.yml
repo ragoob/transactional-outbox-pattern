@@ -54,6 +54,7 @@ services:
     environment:
       POSTGRES_PASSWORD: outbox-P@ssword
       POSTGRES_DB: Transactional-outbox
+      PGDATA: /data/postgres
   outbox:
     container_name: outboxservice
     build:
