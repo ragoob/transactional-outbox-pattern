@@ -56,7 +56,7 @@ services:
   outbox:
     container_name: outboxservice
     build:
-      context: outbox-service/.
+      context: /outbox-service/.
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -71,7 +71,7 @@ services:
   orderlog:
     container_name: orderlogservice
     build:
-      context: no-sql-service/.
+      context: /no-sql-service/.
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
